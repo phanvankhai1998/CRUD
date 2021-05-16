@@ -22,14 +22,44 @@ public class CRUD {
 		insert(2);	//Create [1] -> 2
 		insert(24);	//Create [2] -> 3
 		showList();	//Retrieve
+		update(1,100); //Update
+		showList();	//Retrieve
+		delete(1);		//Delete
+		showList();	//Retrieve
 	}
 	
+	//DELETE
+	private static void delete(int delIndex) {
+		// TODO Auto-generated method stub
+		//erase value : [23][21][4]
+		//array is "static" length is static (cant be changed)
+		//"dynamic" structure can be changed
+		for(int i = delIndex ; (i+1) < list.length ; i++ ) {
+			list[i] = list[i+1]; 	//[0] < [] < [9] < []
+		}
+		//decrease numbets of save data
+		seq--;
+		System.out.println(list.length);
+	}
+
+	//UPDATE
+	private static void update(int index, int value) {
+		// TODO Auto-generated method stub
+		//seq 3, [0][1][2][3]
+		if(index < seq) {
+			list[index] = value;
+		}else {
+			System.out.println("Invail index!!");
+		}
+	}
+
 	//RETRIEVE
 	private static void showList() {
 		// TODO Auto-generated method stub
 		for(int i = 0 ; i< list.length; i++) {
-			System.out.println("Index thứ: " + i + ": " + list[i]);
+			System.out.print(list[i] + ",");
 		}
+		System.out.println("\n");
 	}
 
 	/***
@@ -64,6 +94,5 @@ public class CRUD {
 			System.out.println("List full");
 		}
 	}
-	
 	
 }
